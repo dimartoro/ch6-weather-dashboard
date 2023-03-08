@@ -4,21 +4,35 @@
     border:solid red 3px;
 } */
 
-#ulElements li{
+#ulElements li {
     width: 40%;
     padding: 1em;
-    border:solid red 3px;
+    border: solid red 3px;
     margin: 0.5em;
 }
 
-#ulElements span{
+#ulElements span {
     display: block;
     background-color: aqua;
 }
 
-#divCities span{
-    padding:0.5em;
+#divCities span {
+    padding: 0.5em;
     background-color: blueviolet;
     border: solid black 2px;
-    margin:0.5em;
+    margin: 0.5em;
+}
+
+.history {
+    border: red solid 3px;
+    margin-top: 2em;
+    width: 20%;
+}
+
+.history span {
+    background-color: bisque;
+    border: 2px solid blue;
+    width: 80%;
+    margin: 0.2em;
+    display: block;
 }
