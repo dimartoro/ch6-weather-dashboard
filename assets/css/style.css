@@ -1,0 +1,24 @@
+/* .weatherItems{
+    width: 60%;
+    padding: 1em;
+    border:solid red 3px;
+} */
+
+#ulElements li{
+    width: 40%;
+    padding: 1em;
+    border:solid red 3px;
+    margin: 0.5em;
+}
+
+#ulElements span{
+    display: block;
+    background-color: aqua;
+}
+
+#divCities span{
+    padding:0.5em;
+    background-color: blueviolet;
+    border: solid black 2px;
+    margin:0.5em;
+}
