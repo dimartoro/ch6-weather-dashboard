@@ -2,7 +2,6 @@
 // var APIKey = "2b1df63add6892fd5e0dddb68e308249";
 var APIKey = "82cd293ab88811ccdd319b8413cdedd0";
 
-
 //function in charge of setting up the local storage for the permanency of the data
 function displayHistory() {
     var citiesHistory = [];
@@ -19,7 +18,6 @@ function displayHistory() {
         span.textContent = citiesHistory[x];
         divCities.append(span);
     }
-
 }
 
 //function in charge of seach the city, is call with the click of the button, 
@@ -89,32 +87,50 @@ function displayForecast(forecastObject) {
     console.log("This is the Forecast Data: ", forecastObject);
     var ulElements = document.querySelector("#ulElements");
     ulElements.innerHTML = '';
+    var name = forecastObject.city.name;
     for (var x = 0; x < forecastObject.list.length; x++) {
         var dt = forecastObject.list[x].dt_txt;
         if ((dt.indexOf("00:00:00") >= 0) || x == 0) {
-            var li = document.createElement("li");
-            var spanDT = document.createElement("span");
-            spanDT.textContent = dt;
-            li.append(spanDT);
-            var temp = forecastObject.list[x].main.temp;
-            var spanTemp = document.createElement("span");
-            spanTemp.textContent = temp;
-            li.append(spanTemp);
-            var tempFellsLike = forecastObject.list[x].main.feels_like;
-            var spanLike = document.createElement("span");
-            spanLike.textContent = tempFellsLike;
-            li.append(spanLike);
-            var weather = forecastObject.list[x].weather;
-            for (var y = 0; y < weather.length; y++) {
-                var description = weather[y].description;
-                var spanDesc = document.createElement("span");
-                spanDesc.textContent = description;
-                li.append(spanDesc);
-                var main = weather[y].main;
-                var spanMain = document.createElement("span");
-                spanMain.textContent = main;
-                li.append(spanMain);
+            var li = document.createElement("div");
+            li.classList.add('grid-item');
+            if(x==0){
+                li.classList.add('grid-col-span-5');
+                li.classList.add('grid-item-work-first');
+                li.classList.add('today');
+                var spanName = document.createElement("span");
+                spanName.textContent = name + ' (' + new Date(dt).toLocaleDateString() + ')';
+                li.append(spanName); 
+                var img = document.createElement("img");
+                var weather = forecastObject.list[x].weather;
+                img.setAttribute('src','https://openweathermap.org/img/wn/'+weather[0].icon+'@2x.png');
+                img.classList.add('imgIcon');
+                li.append(img);
             }
+            else{
+                li.classList.add('forecast');
+                var spanDT = document.createElement("span");
+                spanDT.textContent = new Date(dt).toLocaleDateString();
+                li.append(spanDT);
+                var img = document.createElement("img");
+                var weather = forecastObject.list[x].weather;
+                img.setAttribute('src','https://openweathermap.org/img/wn/'+weather[0].icon+'@2x.png');
+                img.classList.add('imgIcon');
+                li.append(img);
+            }
+            
+            
+            var temp = ktof(forecastObject.list[x].main.temp);
+            var spanTemp = document.createElement("span");
+            spanTemp.innerHTML = 'Temp: '+ temp + ' &deg;F';
+            li.append(spanTemp);
+            var speed = forecastObject.list[x].wind.speed;
+            var spanSpeed = document.createElement("span");
+            spanSpeed.textContent = 'Wind: '+ speed + ' MPH';
+            li.append(spanSpeed);
+            var tempHumidity = forecastObject.list[x].main.humidity;
+            var spanHumidity = document.createElement("span");
+            spanHumidity.textContent = 'Humidity: '+  tempHumidity+' %';
+            li.append(spanHumidity);
             ulElements.append(li);
             document.querySelector("#txtSearch").value = '';
         }
@@ -122,5 +138,10 @@ function displayForecast(forecastObject) {
     }
 }
 
+function ktof(k){
+    return ((k-273.15)*(9/5)+32).toFixed(2);
+}
 
+//call to displayHistory() function
 displayHistory();
+
