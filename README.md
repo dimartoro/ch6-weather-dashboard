@@ -66,6 +66,6 @@ https://github.com/dimartoro
 This app is licensed under [MIT](https://choosealicense.com/licenses/mit/) lincense
 
 ## DeployedURL
-https://drive.google.com/file/d/1Ic14KwgC7xy8tJC7A5SB_llg_hcsXhf1/view
+https://dimartoro.github.io/ch6-weather-dashboard/
 
 
