@@ -36,7 +36,14 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city  
 
 ## Credits
-none
+
+https://openweathermap.org/api/one-call-3#start
+
+https://css-tricks.com/grid-auto-flow-css-grid-flex-direction-flexbox/  
+
+https://courses.bootcampspot.com/courses/3100/assignments/48756?module_item_id=890490  
+
+   
 
 ## Tests
 Accomplishing the user criteria will successfully test the application.  
