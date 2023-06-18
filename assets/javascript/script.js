@@ -54,7 +54,7 @@ function searchCity(caller) {
 function fetchCity(city) {
 
     var coordinates = {};
-    var queryCityAPI = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    var queryCityAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
     fetch(queryCityAPI)
         .then(function(response) {
